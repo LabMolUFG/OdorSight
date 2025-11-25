@@ -1,0 +1,6 @@
+Model: LGBM
+BACC: 0.9302
+MCC: 0.8256
+Precision: 0.9515
+Recall: 0.9484
+F1: 0.9494

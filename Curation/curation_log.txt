@@ -1,0 +1,11 @@
+Log do processo de curadoria:
+Initial Compounds: 5093
+Removed After Drop NaN Molecule/Outcome: 3
+Invalid SMILES Removed During Preparation: 7
+SMILES Standardized Removed: 0
+Salts Removed: 107
+Mixtures Removed: 123
+InChI Calculation Removed: 0
+Concordant Duplicates Removed: 561
+Discordant Duplicates Removed: 33
+Final Compounds: 4259

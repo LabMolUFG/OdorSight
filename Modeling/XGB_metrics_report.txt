@@ -1,0 +1,6 @@
+Best Model: XGB
+BACC: 0.9345
+MCC: 0.8596
+Precision: 0.9606
+Recall: 0.9601
+F1: 0.9603

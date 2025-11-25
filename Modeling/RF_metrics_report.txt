@@ -1,0 +1,6 @@
+Model: RF
+BACC: 0.9329
+MCC: 0.8155
+Precision: 0.9492
+Recall: 0.9437
+F1: 0.9453
