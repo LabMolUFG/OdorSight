@@ -439,8 +439,8 @@ if __name__ == "__main__":
 
     # --- Load Data ---
     print("Loading datasets...")
-    df_train = pd.read_csv('Modeling/DATA/train_dataset.csv')
-    df_ext = pd.read_csv('Modeling/DATA/test_dataset.csv') # External set
+    df_train = pd.read_csv('DATA/train_dataset.csv')
+    df_ext = pd.read_csv('DATA/test_dataset.csv') # External set
     
     # Canonicalize
     df_train['canon_smiles'] = df_train['SMILES'].apply(canonicalize_smiles)

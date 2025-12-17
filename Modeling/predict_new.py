@@ -38,7 +38,7 @@ def load_prediction_artifacts(model_path='gnn_best_model_cv5.pth', params_path='
     # Infer input dim
     dummy = smiles_to_data("C")
     num_node_features = dummy.num_node_features
-    edge_dim = dummy.edge_attr.shape[1] if dummy.edge_attr is not None else 0
+    edge_dim = dummy.edge_attr.shape[1] if (dummy.edge_attr is not None and len(dummy.edge_attr.shape) > 1) else 0
 
     model = GNN_Optimized(
         num_node_features=num_node_features,
