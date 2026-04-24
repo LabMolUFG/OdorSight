@@ -1,0 +1,10 @@
+{
+  "model_type": "GAT",
+  "num_layers": 6,
+  "hidden_channels": 256,
+  "heads": 2,
+  "dropout": 0.21,
+  "lr": 2.87e-04,
+  "batch_size": 32,
+  "weight_decay": 2.62e-04
+}

@@ -1,0 +1,13 @@
+Metric,Value
+Balanced Accuracy (BACC),0.7281
+Matthews Correlation Coefficient (MCC),0.5706
+Precision,0.8197
+Recall,0.9765
+Specificity,0.4797
+F1 Score,0.8913
+Negative Predictive Value (NPV),0.8939
+True Negatives,59
+False Positives,64
+False Negatives,7
+True Positives,291
+Total Samples,421
