@@ -1,0 +1,41 @@
+Device: cpu | params: {'model_type': 'GAT', 'num_layers': 6, 'hidden_channels': 256, 'heads': 2, 'dropout': 0.21, 'lr': 0.000287, 'batch_size': 32, 'weight_decay': 0.000262}
+Bootstrap B=10000 | threshold-method=cv5 (bacc) | seed=42
+Train mols: 3791 | Test mols: 421 (of 421 rows) | node_feats=45 edge_dim=11
+Test class balance: pos=298 neg=123
+
+--- Reproduction check (expected: BACC@0.5=0.8916, gmean thr~0.9376 -> BACC~0.9124) ---
+  BACC@0.5          = 0.8916
+  gmean test thr    = 0.9376  -> BACC = 0.9124
+
+Odorify predictions aligned for 421/421 test molecules.
+  [cv5] fold 1/5: train 3032 / val 759
+  [cv5] fold 2/5: train 3033 / val 758
+  [cv5] fold 3/5: train 3033 / val 758
+  [cv5] fold 4/5: train 3033 / val 758
+  [cv5] fold 5/5: train 3033 / val 758
+
+Primary (honest) threshold [cv5-bacc] = 0.7341
+
+================ Odor-Sight @ primary threshold [cv5-bacc=0.7341] ================
+metric          point                 95% CI
+BACC           0.9045   [0.8717, 0.9352]
+MCC            0.7930   [0.7290, 0.8544]
+Precision      0.9516   [0.9283, 0.9745]
+Recall         0.9228   [0.8926, 0.9530]
+Specificity    0.8862   [0.8293, 0.9431]
+F1             0.9370   [0.9162, 0.9559]
+ROC_AUC        0.9520   [0.9298, 0.9716]
+PR_AUC         0.9799   [0.9701, 0.9885]
+
+================ Paired difference (Odor-Sight - Odorify) ================
+metric           diff                 95% CI    p(2s)
+BACC           0.1764   [0.1307, 0.2228]  0.0000
+MCC            0.2224   [0.1395, 0.3111]  0.0000
+Precision      0.1318   [0.1042, 0.1595]  0.0000
+Recall        -0.0537   [-0.0839, -0.0268]  0.0002
+Specificity    0.4065   [0.3171, 0.4959]  0.0000
+F1             0.0457   [0.0237, 0.0673]  0.0000
+ROC_AUC        0.1280   [0.0900, 0.1685]  0.0000
+PR_AUC         0.0910   [0.0662, 0.1167]  0.0000
+
+Saved outputs to: c:\Users\lorde\OneDrive\Documentos\odorsight\OdorSight\Modeling\uncertainty\results

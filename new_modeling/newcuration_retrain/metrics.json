@@ -1,0 +1,31 @@
+{
+  "dataset": "curated_dataset.csv (new curation, 4201)",
+  "split": {
+    "test_fraction": 0.1,
+    "seed": 42,
+    "n_train": 3781,
+    "n_test": 420,
+    "constraint": "test drawn only from Odorify-exclusive molecules"
+  },
+  "threshold_optimal_gmean_on_test": 0.7642232179641724,
+  "metrics_at_0.5": {
+    "BACC": 0.8887987012987013,
+    "MCC": 0.7470381142323433,
+    "Precision": 0.952054794520548,
+    "Recall": 0.9025974025974026,
+    "Specificity": 0.875,
+    "F1": 0.9266666666666666,
+    "ROC_AUC": 0.940732258812616,
+    "PR_AUC": 0.9712467107878017
+  },
+  "metrics_at_optimal": {
+    "BACC": 0.8973214285714286,
+    "MCC": 0.7539124891735132,
+    "Precision": 0.9615384615384616,
+    "Recall": 0.8928571428571429,
+    "Specificity": 0.9017857142857143,
+    "F1": 0.9259259259259259,
+    "ROC_AUC": 0.940732258812616,
+    "PR_AUC": 0.9712467107878017
+  }
+}

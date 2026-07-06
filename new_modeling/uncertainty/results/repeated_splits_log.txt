@@ -1,0 +1,36 @@
+
+==== Repeated splits: 15 seeds from 1000 | epochs=80 | threshold=bacc | device=cuda ====
+Pool: 4212 molecules | no_overlap=True: 1020
+Featurized OK: 4212/4212
+node_feats=45 edge_dim=11
+seed 1000 (1/15): BACC=0.9200 MCC=0.8218 F1=0.9454 thr=0.285 [283s] ETA ~66.1 min
+seed 1001 (2/15): BACC=0.8860 MCC=0.7414 F1=0.9167 thr=0.967 [294s] ETA ~62.5 min
+seed 1002 (3/15): BACC=0.9055 MCC=0.8017 F1=0.9408 thr=0.169 [283s] ETA ~57.3 min
+seed 1003 (4/15): BACC=0.9023 MCC=0.7676 F1=0.9231 thr=0.726 [264s] ETA ~51.5 min
+seed 1004 (5/15): BACC=0.8786 MCC=0.7259 F1=0.9113 thr=0.238 [267s] ETA ~46.4 min
+seed 1005 (6/15): BACC=0.9038 MCC=0.7966 F1=0.9390 thr=0.456 [276s] ETA ~41.7 min
+seed 1006 (7/15): BACC=0.9162 MCC=0.7916 F1=0.9298 thr=0.721 [284s] ETA ~37.2 min
+seed 1007 (8/15): BACC=0.9049 MCC=0.7790 F1=0.9289 thr=0.961 [286s] ETA ~32.6 min
+seed 1008 (9/15): BACC=0.9030 MCC=0.7654 F1=0.9209 thr=0.842 [272s] ETA ~27.9 min
+seed 1009 (10/15): BACC=0.9270 MCC=0.8159 F1=0.9389 thr=0.899 [287s] ETA ~23.3 min
+seed 1010 (11/15): BACC=0.8818 MCC=0.7600 F1=0.9293 thr=0.188 [291s] ETA ~18.7 min
+seed 1011 (12/15): BACC=0.9313 MCC=0.8326 F1=0.9465 thr=0.713 [293s] ETA ~14.1 min
+seed 1012 (13/15): BACC=0.9243 MCC=0.8046 F1=0.9331 thr=0.983 [297s] ETA ~9.4 min
+seed 1013 (14/15): BACC=0.8963 MCC=0.7483 F1=0.9133 thr=0.730 [297s] ETA ~4.7 min
+seed 1014 (15/15): BACC=0.8753 MCC=0.7525 F1=0.9280 thr=0.577 [272s] ETA ~0.0 min
+
+==== Summary across 15 seeds ====
+metric             mean      std                 95% CI      min      max
+threshold        0.6303   0.2942   [0.1758, 0.9769]    0.1695   0.9825
+BACC             0.9038   0.0178   [0.8765, 0.9298]    0.8753   0.9313
+BACC@0.5         0.9026   0.0156   [0.8803, 0.9307]    0.8793   0.9339
+MCC              0.7803   0.0319   [0.7313, 0.8288]    0.7259   0.8326
+MCC@0.5          0.7874   0.0303   [0.7356, 0.8383]    0.7237   0.8456
+Precision        0.9587   0.0164   [0.9285, 0.9803]    0.9264   0.9815
+Recall           0.9029   0.0228   [0.8705, 0.9317]    0.8658   0.9329
+Specificity      0.9046   0.0408   [0.8268, 0.9565]    0.8211   0.9593
+F1               0.9297   0.0111   [0.9120, 0.9461]    0.9113   0.9465
+F1@0.5           0.9343   0.0108   [0.9127, 0.9500]    0.9091   0.9521
+ROC_AUC          0.9514   0.0114   [0.9318, 0.9701]    0.9290   0.9747
+PR_AUC           0.9760   0.0071   [0.9648, 0.9879]    0.9639   0.9898
+Saved summary + plot to c:\Users\lorde\OneDrive\Documentos\odorsight\OdorSight\Modeling\uncertainty\results

@@ -1,0 +1,33 @@
+{
+  "selection": "highest BACC among K=15 repeated splits (new curation)",
+  "seed": 1009,
+  "curation": "curated_dataset.csv (4201)",
+  "n_train_full": 3781,
+  "n_train_used_for_model": 3213,
+  "n_val_for_threshold": 568,
+  "n_test": 420,
+  "test_pos": 308,
+  "test_neg": 112,
+  "threshold": 0.7161187529563904,
+  "metrics_at_threshold": {
+    "BACC": 0.8993506493506493,
+    "MCC": 0.7656449291531804,
+    "Precision": 0.9587628865979382,
+    "Recall": 0.9058441558441559,
+    "Specificity": 0.8928571428571429,
+    "F1": 0.9315525876460768,
+    "ROC_AUC": 0.9388914656771798,
+    "PR_AUC": 0.9694740998931247
+  },
+  "metrics_at_0.5": {
+    "BACC": 0.8952922077922079,
+    "MCC": 0.7664360439071324,
+    "Precision": 0.9527027027027027,
+    "Recall": 0.9155844155844156,
+    "Specificity": 0.875,
+    "F1": 0.9337748344370861,
+    "ROC_AUC": 0.9388914656771798,
+    "PR_AUC": 0.9694740998931247
+  },
+  "note": "Model trained on 85% of the split's training set; threshold chosen on the remaining 15% (never the test set). train_dataset.csv is the full split train."
+}

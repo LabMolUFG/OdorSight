@@ -1,0 +1,22 @@
+Device: cuda | params: {'model_type': 'GAT', 'num_layers': 6, 'hidden_channels': 256, 'heads': 2, 'dropout': 0.21, 'lr': 0.000287, 'batch_size': 32, 'weight_decay': 0.000262}
+NEW curation: 4201 cpds | Odorify-exclusive (test-eligible): 941 | train-only: 3260 (of which 168 are new/unknown-status)
+Removed 0 train/test canonical-SMILES overlaps.
+Split: train 3781 (90.0%) | test 420 (10.0%)
+  train balance {1: 3217, 0: 564} | test balance {1: 308, 0: 112}
+  Benchmark disjointness: PASSED (test set is disjoint from Odorify by construction)
+Featurized: train 3781 / test 420 | node_feats=45 edge_dim=11
+Retraining with published hyperparameters (80 epochs)...
+
+================ NEW-CURATION model — external test ================
+metric             @0.5  @optimal(0.764)
+BACC             0.8888           0.8973
+MCC              0.7470           0.7539
+Precision        0.9521           0.9615
+Recall           0.9026           0.8929
+Specificity      0.8750           0.9018
+F1               0.9267           0.9259
+ROC_AUC          0.9407           0.9407
+PR_AUC           0.9712           0.9712
+
+--- Reference: PUBLISHED model on OLD curation ---
+BACC  0.8916 (@0.5) / 0.9124 (@opt) | MCC 0.79 | F1 0.93 | Prec 0.96 | Rec 0.91

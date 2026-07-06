@@ -1,0 +1,51 @@
+Device: cuda | params: {'model_type': 'GAT', 'num_layers': 6, 'hidden_channels': 256, 'heads': 2, 'dropout': 0.21, 'lr': 0.000287, 'batch_size': 32, 'weight_decay': 0.000262} | B=10000 seeds=15
+Pool: 4201 cpds | Odorify-exclusive 941 | featurized 4201
+
+===== Approach A: bootstrap CIs on the retrained primary model =====
+Primary test N=420 | pos=308 neg=112
+Deriving honest threshold (5-fold OOF on the primary training set)...
+    [cv5] fold 1/5
+    [cv5] fold 2/5
+    [cv5] fold 3/5
+    [cv5] fold 4/5
+    [cv5] fold 5/5
+Honest threshold (train CV) = 0.9435
+
+metric          point                 95% CI  (honest threshold)
+BACC           0.8896   [0.8567, 0.9196]
+MCC            0.7191   [0.6546, 0.7814]
+Precision      0.9704   [0.9498, 0.9887]
+Recall         0.8506   [0.8084, 0.8896]
+Specificity    0.9286   [0.8750, 0.9732]
+F1             0.9066   [0.8803, 0.9302]
+ROC_AUC        0.9407   [0.9115, 0.9661]
+PR_AUC         0.9712   [0.9514, 0.9870]
+
+===== Approach B: variance across repeated constrained splits =====
+seed 1000 (1/15): BACC=0.8799 MCC=0.7619 F1=0.9368 thr=0.425
+seed 1001 (2/15): BACC=0.8896 MCC=0.7628 F1=0.9342 thr=0.437
+seed 1002 (3/15): BACC=0.8872 MCC=0.7423 F1=0.9249 thr=0.963
+seed 1003 (4/15): BACC=0.8799 MCC=0.7331 F1=0.9236 thr=0.670
+seed 1004 (5/15): BACC=0.8916 MCC=0.7493 F1=0.9264 thr=0.876
+seed 1005 (6/15): BACC=0.8709 MCC=0.6972 F1=0.9066 thr=0.970
+seed 1006 (7/15): BACC=0.8758 MCC=0.7339 F1=0.9259 thr=0.673
+seed 1007 (8/15): BACC=0.8653 MCC=0.7151 F1=0.9211 thr=0.353
+seed 1008 (9/15): BACC=0.8872 MCC=0.7423 F1=0.9249 thr=0.346
+seed 1009 (10/15): BACC=0.9115 MCC=0.7890 F1=0.9382 thr=0.804
+seed 1010 (11/15): BACC=0.8908 MCC=0.7596 F1=0.9322 thr=0.949
+seed 1011 (12/15): BACC=0.8811 MCC=0.7579 F1=0.9349 thr=0.396
+seed 1012 (13/15): BACC=0.8953 MCC=0.7430 F1=0.9202 thr=0.888
+seed 1013 (14/15): BACC=0.8933 MCC=0.7328 F1=0.9144 thr=0.918
+seed 1014 (15/15): BACC=0.8945 MCC=0.7515 F1=0.9262 thr=0.977
+
+metric           mean      std              95% range
+BACC           0.8863   0.0113   [0.8672, 0.9058]
+MCC            0.7448   0.0217   [0.7035, 0.7798]
+Precision      0.9502   0.0108   [0.9340, 0.9668]
+Recall         0.9035   0.0208   [0.8669, 0.9360]
+Specificity    0.8690   0.0318   [0.8214, 0.9165]
+F1             0.9260   0.0086   [0.9093, 0.9377]
+ROC_AUC        0.9487   0.0082   [0.9349, 0.9596]
+PR_AUC         0.9782   0.0056   [0.9691, 0.9854]
+
+Saved to c:\Users\lorde\OneDrive\Documentos\odorsight\OdorSight\Modeling\newcuration_retrain\uncertainty_results
