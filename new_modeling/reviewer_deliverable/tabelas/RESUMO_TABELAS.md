@@ -80,6 +80,29 @@ Threshold "honesto" = derivado do treino (CV/holdout), nunca do test set.
 
 ---
 
+## C. Baselines de ML clássico vs GNN (nova curadoria)
+
+RF/SVM/XGBoost com o **mesmo rigor** (split restrito, tuning CV5-BACC, K=15, bootstrap CIs,
+threshold honesto). Features: ECFP4 (2048 bits) e 12 descritores físico-químicos.
+
+| Modelo | BACC (K=15) | MCC | ROC-AUC | vs GNN (pareado) |
+|---|---|---|---|---|
+| **GNN (GAT)** | 0,886 ± 0,011 | 0,745 ± 0,022 | 0,949 ± 0,008 | — |
+| RF · descritores | 0,893 ± 0,012 | 0,747 ± 0,025 | 0,948 ± 0,008 | empata (n.s.) |
+| SVM · descritores | 0,888 ± 0,012 | 0,747 ± 0,024 | 0,952 ± 0,009 | empata (n.s.) |
+| XGB · descritores | 0,889 ± 0,015 | 0,740 ± 0,027 | 0,948 ± 0,007 | empata (n.s.) |
+| RF · ECFP4 | 0,861 ± 0,011 | 0,699 ± 0,027 | 0,934 ± 0,011 | n.s. |
+| SVM · ECFP4 | 0,833 ± 0,028 | 0,621 ± 0,063 | 0,910 ± 0,015 | **pior (BACC\*)** |
+| XGB · ECFP4 | 0,865 ± 0,012 | 0,707 ± 0,021 | 0,943 ± 0,008 | n.s. |
+
+> **Achado:** modelos clássicos com descritores **empatam** com o GNN — nenhuma diferença
+> pareada é significativa (ICs 95% incluem 0). Fingerprints < descritores. O valor do GNN está
+> na **interpretabilidade** (EdgeSHAPer) e na plataforma, não em acurácia superior. Detalhes +
+> texto sugerido para o paper: `../../ml_baseline/ML_BASELINE_RESULTS.md`.
+
+---
+
 ### Arquivos-fonte (CSV completos nesta pasta)
 - `submetido_bootstrap_CIs.csv`, `submetido_vs_odorify.csv`, `submetido_splits_repetidos.csv`
 - `novacuracao_bootstrap_CIs.csv`, `novacuracao_splits_repetidos.csv`, `novacuracao_splits_por_seed.csv`
+- `gnn_vs_ml_baselines.csv`, `ml_baselines_paired_vs_gnn.csv`
