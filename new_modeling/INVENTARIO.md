@@ -16,8 +16,6 @@ Para uma leitura rápida do que importa: `README.md` (raiz) → `reviewer_delive
 | `gnn_utils.py` ⚙️ | Featurização molécula→grafo (átomos/ligações/descritores). Cópia do pipeline do repo; usado por `common.py`. |
 | `best_params.json` ⚙️📎 | Hiperparâmetros publicados (GAT, 6 camadas, 256, etc.). Lido por `common.load_params()`. |
 | `gnn_best_model_cv5.pth` ⚙️ | **Modelo PUBLICADO** (curadoria 4.212). Cópia do original em `Modeling/`; carregado pelos scripts da versão submetida. 5,5 MB. |
-| `DATA/train_dataset.csv` ⚙️📎 | Split de **treino da versão submetida** (3.791 moléculas). Lido por `uncertainty/*.py`. |
-| `DATA/test_dataset.csv` ⚙️📎 | Split de **teste da versão submetida** (421). Lido por `uncertainty/*.py`. |
 
 ---
 
