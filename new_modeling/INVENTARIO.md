@@ -57,6 +57,26 @@ Para uma leitura rápida do que importa: `README.md` (raiz) → `reviewer_delive
 
 ---
 
+## `ml_baseline/` — BASELINES CLÁSSICOS (RF/SVM/XGBoost, Morgan/ECFP4)
+| Arquivo | O que é |
+|---|---|
+| `ml_common.py` ⚙️ | Featurização Morgan/ECFP4 (2048 bits), construção do pool/split restrito, fábricas de modelo (RF/SVM/XGB), tuning Optuna (CV5-BACC) e threshold honesto. Importa `common.py` da `uncertainty/`. |
+| `train_ml_baselines.py` ⚙️ | Runner: por algoritmo, tuna HPs, treina no split primário, gera bootstrap CIs + K=15 splits + **pareado vs GNN**, e salva o `.joblib`. |
+| `ML_BASELINE_RESULTS.md` 📄 | Tabelas + interpretação (GNN vs clássicos) + **texto sugerido** para o manuscrito. |
+| `results/comparison_GNN_vs_classical.csv` 📊 | Tabela mestre (K=15, média ± DP): GNN vs RF/SVM/XGB. |
+| `results/primary_bootstrap_CIs.csv` 📊 | Ponto + IC 95% de cada métrica no test primário (por algoritmo). |
+| `results/repeated_splits.csv` 📊 | Média ± DP nos 15 splits (por algoritmo). |
+| `results/paired_vs_gnn.csv` 📊 | Diferença (clássico − GNN) pareada no mesmo teste (IC + p). |
+| `results/comparison_BACC.png` 📊 | Barras de BACC: GNN vs clássicos (± DP). |
+| `results/best_params.json` 📊 | HPs tunados de cada algoritmo (RF/SVM/XGB) + CV5-BACC. |
+| `results/log.txt` 📄 | Log da execução. |
+| `results/models/rf_ecfp4_primary.joblib` 📊 | Modelo **RF** treinado (split primário, Morgan/ECFP4). Deployável. |
+| `results/models/svm_ecfp4_primary.joblib` 📊 | Modelo **SVM** treinado (split primário). Deployável. |
+| `results/models/xgb_ecfp4_primary.joblib` 📊 | Modelo **XGBoost** treinado (split primário). Deployável. |
+| `results/models/models_meta.json` 📊 | Metadados dos 3 modelos (threshold + métricas de teste). |
+
+---
+
 ## `reviewer_deliverable/` — ENTREGA CONSOLIDADA (autossuficiente)
 | Arquivo | O que é |
 |---|---|
