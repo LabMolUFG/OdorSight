@@ -42,7 +42,7 @@ new_modeling/
 │   └── uncertainty_results/         (CIs + K=15 splits da nova curadoria)
 │
 ├── ml_baseline/                    ► BASELINES CLÁSSICOS (RF/SVM/XGBoost)
-│   ├── ml_common.py, train_ml_baselines.py  (features ECFP4/descritores + tuning + CIs)
+│   ├── ml_common.py, train_ml_baselines.py  (features Morgan/ECFP4 + tuning + CIs + joblib)
 │   ├── ML_BASELINE_RESULTS.md       (tabelas + interpretação + texto p/ o paper)
 │   └── results/                     (comparação GNN vs clássicos + CIs + pareado + figura)
 │
@@ -68,7 +68,7 @@ Os scripts são autossuficientes se `new_modeling/` estiver em `OdorSight/` (usa
   `python uncertainty/repeated_splits.py --seeds 15`
 - Nova curadoria: `python newcuration_retrain/retrain_new_curation.py` depois
   `python newcuration_retrain/uncertainty_new_curation.py --seeds 15`
-- Baselines ML: `python ml_baseline/train_ml_baselines.py` (RF/SVM/XGB × ECFP4/descritores)
+- Baselines ML: `python ml_baseline/train_ml_baselines.py` (RF/SVM/XGB em Morgan/ECFP4; salva .joblib)
 
 ## Avisos
 1. **Não reportar "melhor de N" como número principal** (viés de seleção). Use média ± DP / CIs.

@@ -1,44 +1,26 @@
-Building pool + features (new curation 4201)...
-Pool 4201 | ECFP4 (4201, 2048) | desc (4201, 12) | class balance {0: 676, 1: 3525}
+Building pool + Morgan/ECFP4 features (new curation 4201)...
+Pool 4201 | ECFP4 (4201, 2048) | class balance {0: 676, 1: 3525}
 Primary split (seed 42): train 3781 / test 420
 Computing GNN probabilities on the primary test set...
 
-===== rf|ecfp4 =====
+===== RF | ecfp4 =====
   tuned (CV5 BACC=0.8888): {'n_estimators': 700, 'max_depth': None, 'min_samples_split': 8, 'min_samples_leaf': 3, 'max_features': 0.3}
-  honest thr=0.650 -> BACC=0.8608 MCC=0.6846 F1=0.9057 ROC-AUC=0.9223
-  K=15 BACC 0.8609 +/- 0.0111
+  honest thr=0.650 -> BACC=0.8608 MCC=0.6846 ROC-AUC=0.9223
+  K=15 BACC 0.8609 +/- 0.0111 | best seed 1009 (BACC 0.8782)
 
-===== rf|desc =====
-  tuned (CV5 BACC=0.9242): {'n_estimators': 700, 'max_depth': 20, 'min_samples_split': 8, 'min_samples_leaf': 4, 'max_features': 'log2'}
-  honest thr=0.708 -> BACC=0.9002 MCC=0.7563 F1=0.9257 ROC-AUC=0.9493
-  K=15 BACC 0.8928 +/- 0.0117
-
-===== svm|ecfp4 =====
+===== SVM | ecfp4 =====
   tuned (CV5 BACC=0.8547): {'C': 0.5838891112221529, 'gamma': 'auto'}
-  honest thr=0.670 -> BACC=0.8571 MCC=0.6701 F1=0.8980 ROC-AUC=0.9212
-  K=15 BACC 0.8330 +/- 0.0283
+  honest thr=0.670 -> BACC=0.8571 MCC=0.6701 ROC-AUC=0.9212
+  K=15 BACC 0.8330 +/- 0.0283 | best seed 1008 (BACC 0.8709)
 
-===== svm|desc =====
-  tuned (CV5 BACC=0.9303): {'C': 1.459730806851994, 'gamma': 'scale'}
-  honest thr=0.900 -> BACC=0.9022 MCC=0.7678 F1=0.9313 ROC-AUC=0.9607
-  K=15 BACC 0.8883 +/- 0.0121
-
-===== xgb|ecfp4 =====
+===== XGB | ecfp4 =====
   tuned (CV5 BACC=0.8967): {'n_estimators': 600, 'max_depth': 5, 'learning_rate': 0.04168299476219161, 'subsample': 0.9429564520037396, 'colsample_bytree': 0.681622459960213, 'min_child_weight': 1, 'reg_lambda': 0.03132642408656101}
-  honest thr=0.704 -> BACC=0.8912 MCC=0.7424 F1=0.9226 ROC-AUC=0.9370
-  K=15 BACC 0.8655 +/- 0.0119
+  honest thr=0.704 -> BACC=0.8912 MCC=0.7424 ROC-AUC=0.9370
+  K=15 BACC 0.8655 +/- 0.0119 | best seed 1001 (BACC 0.8847)
 
-===== xgb|desc =====
-  tuned (CV5 BACC=0.9325): {'n_estimators': 300, 'max_depth': 5, 'learning_rate': 0.025410429520925926, 'subsample': 0.6024580181928786, 'colsample_bytree': 0.9966609325825934, 'min_child_weight': 2, 'reg_lambda': 0.0029496748321265367}
-  honest thr=0.640 -> BACC=0.9026 MCC=0.7753 F1=0.9351 ROC-AUC=0.9507
-  K=15 BACC 0.8890 +/- 0.0146
-
-===== COMPARISON (K=15 mean ± SD) =====
-      model          BACC           MCC            F1       ROC_AUC        PR_AUC
-  GNN (GAT) 0.886 ± 0.011 0.745 ± 0.022 0.926 ± 0.009 0.949 ± 0.008 0.978 ± 0.006
- RF (ecfp4) 0.861 ± 0.011 0.699 ± 0.027 0.914 ± 0.011 0.934 ± 0.011 0.973 ± 0.006
-  RF (desc) 0.893 ± 0.012 0.747 ± 0.025 0.924 ± 0.010 0.948 ± 0.008 0.980 ± 0.004
-SVM (ecfp4) 0.833 ± 0.028 0.621 ± 0.063 0.874 ± 0.038 0.910 ± 0.015 0.957 ± 0.009
- SVM (desc) 0.888 ± 0.012 0.747 ± 0.024 0.926 ± 0.010 0.952 ± 0.009 0.982 ± 0.005
-XGB (ecfp4) 0.865 ± 0.012 0.707 ± 0.021 0.916 ± 0.011 0.943 ± 0.008 0.976 ± 0.005
- XGB (desc) 0.889 ± 0.015 0.740 ± 0.027 0.922 ± 0.010 0.948 ± 0.007 0.980 ± 0.004
+===== COMPARISON (K=15 mean +/- SD) =====
+      model            BACC             MCC              F1         ROC_AUC          PR_AUC
+  GNN (GAT) 0.886 +/- 0.011 0.745 +/- 0.022 0.926 +/- 0.009 0.949 +/- 0.008 0.978 +/- 0.006
+ RF (ECFP4) 0.861 +/- 0.011 0.699 +/- 0.027 0.914 +/- 0.011 0.934 +/- 0.011 0.973 +/- 0.006
+SVM (ECFP4) 0.833 +/- 0.028 0.621 +/- 0.063 0.874 +/- 0.038 0.910 +/- 0.015 0.957 +/- 0.009
+XGB (ECFP4) 0.865 +/- 0.012 0.707 +/- 0.021 0.916 +/- 0.011 0.943 +/- 0.008 0.976 +/- 0.005

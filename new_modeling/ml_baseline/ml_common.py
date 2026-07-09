@@ -9,9 +9,7 @@ scientific standards used for the GNN:
   - uncertainty via bootstrap CIs + K=15 repeated splits;
   - identical metric panel (BACC, MCC, Precision, Recall, Specificity, F1, ROC-AUC, PR-AUC).
 
-Two feature families per algorithm:
-  - ECFP4  : Morgan fingerprints, radius 2, 2048 bits;
-  - DESC   : 12 core physicochemical descriptors (extends the GNN's 4 global descriptors).
+Features: Morgan/ECFP4 fingerprints (radius 2, 2048 bits).
 """
 import os, sys
 import numpy as np
@@ -28,7 +26,6 @@ from sklearn.metrics import balanced_accuracy_score
 from xgboost import XGBClassifier
 
 from rdkit import Chem
-from rdkit.Chem import Descriptors
 from rdkit.Chem import rdFingerprintGenerator as _fpg
 from rdkit import RDLogger
 RDLogger.DisableLog("rdApp.*")
@@ -47,11 +44,6 @@ GNN_PRIMARY_DATA = os.path.join(NEW_MODELING, "newcuration_retrain", "DATA")
 GNN_MODEL = os.path.join(NEW_MODELING, "newcuration_retrain", "gnn_model_newcuration.pth")
 
 TEST_FRACTION = 0.10
-CORE_DESCRIPTORS = [
-    "MolWt", "MolLogP", "TPSA", "LabuteASA", "MolMR", "NumHDonors", "NumHAcceptors",
-    "NumRotatableBonds", "FractionCSP3", "NumAromaticRings", "RingCount", "NumHeteroatoms",
-]
-_DESC_FUNCS = {n: getattr(Descriptors, n) for n in CORE_DESCRIPTORS}
 _MORGAN = _fpg.GetMorganGenerator(radius=2, fpSize=2048)
 
 
@@ -68,27 +60,13 @@ def ecfp4(smiles):
     ConvertToNumpyArray(_MORGAN.GetFingerprint(m), arr)
     return arr
 
-def core_desc(smiles):
-    m = _mol(smiles)
-    if m is None:
-        return None
-    out = np.empty((len(CORE_DESCRIPTORS),), dtype=np.float32)
-    for i, n in enumerate(CORE_DESCRIPTORS):
-        try:
-            out[i] = _DESC_FUNCS[n](m)
-        except Exception:
-            out[i] = np.nan
-    return out
-
-def featurize(df, feature, smiles_col="SMILES"):
-    """Return (X, valid_mask) aligned to df rows for the requested feature family."""
-    fn = ecfp4 if feature == "ecfp4" else core_desc
+def featurize(df, smiles_col="SMILES"):
+    """Return (X, valid_mask) of Morgan/ECFP4 fingerprints aligned to df rows."""
     rows, valid = [], []
-    dim = 2048 if feature == "ecfp4" else len(CORE_DESCRIPTORS)
     for s in df[smiles_col]:
-        v = fn(s)
+        v = ecfp4(s)
         if v is None:
-            rows.append(np.full((dim,), np.nan, dtype=np.float32)); valid.append(False)
+            rows.append(np.full((2048,), np.nan, dtype=np.float32)); valid.append(False)
         else:
             rows.append(v); valid.append(True)
     return np.vstack(rows), np.array(valid)

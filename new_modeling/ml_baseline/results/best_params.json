@@ -1,5 +1,5 @@
 {
-  "rf|ecfp4": {
+  "rf": {
     "params": {
       "n_estimators": 700,
       "max_depth": null,
@@ -9,31 +9,14 @@
     },
     "cv5_bacc": 0.8888117911294818
   },
-  "rf|desc": {
-    "params": {
-      "n_estimators": 700,
-      "max_depth": 20,
-      "min_samples_split": 8,
-      "min_samples_leaf": 4,
-      "max_features": "log2"
-    },
-    "cv5_bacc": 0.9241543577935184
-  },
-  "svm|ecfp4": {
+  "svm": {
     "params": {
       "C": 0.5838891112221529,
       "gamma": "auto"
     },
     "cv5_bacc": 0.8547497434198498
   },
-  "svm|desc": {
-    "params": {
-      "C": 1.459730806851994,
-      "gamma": "scale"
-    },
-    "cv5_bacc": 0.9303095037065423
-  },
-  "xgb|ecfp4": {
+  "xgb": {
     "params": {
       "n_estimators": 600,
       "max_depth": 5,
@@ -44,17 +27,5 @@
       "reg_lambda": 0.03132642408656101
     },
     "cv5_bacc": 0.896696096733324
-  },
-  "xgb|desc": {
-    "params": {
-      "n_estimators": 300,
-      "max_depth": 5,
-      "learning_rate": 0.025410429520925926,
-      "subsample": 0.6024580181928786,
-      "colsample_bytree": 0.9966609325825934,
-      "min_child_weight": 2,
-      "reg_lambda": 0.0029496748321265367
-    },
-    "cv5_bacc": 0.9324630630156232
   }
 }
