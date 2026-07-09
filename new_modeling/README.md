@@ -19,9 +19,7 @@ Pasta de entrega principal — tabelas prontas, figuras e o melhor modelo. Leia
 ```
 new_modeling/
 ├── README.md                        (este arquivo)
-├── gnn_utils.py, best_params.json,  (dependências dos scripts — cópias do pipeline do repo)
-│   gnn_best_model_cv5.pth           (modelo PUBLICADO, cópia; original em Modeling/)
-├── DATA/                            (split da versão SUBMETIDA — train 3.791 / test 421)
+├── gnn_utils.py, best_params.json   (dependências dos scripts — cópias do pipeline do repo)
 │
 ├── uncertainty/                     ► VERSÃO SUBMETIDA (4.212)
 │   ├── common.py                    (modelo + métricas + bootstrap + treino)
@@ -46,10 +44,9 @@ new_modeling/
 │   ├── ML_BASELINE_RESULTS.md       (tabelas + interpretação + texto p/ o paper)
 │   └── results/                     (comparação GNN vs clássicos + CIs + pareado + figura)
 │
-└── reviewer_deliverable/           ► ENTREGA CONSOLIDADA
+└── reviewer_deliverable/           ► ENTREGA CONSOLIDADA (enxuta)
     ├── README.md
-    ├── tabelas/   (6 CSVs + RESUMO_TABELAS.md)
-    ├── figuras/   (forest plot + boxplots)
+    ├── tabelas/RESUMO_TABELAS.md   (tabelas inline; CSVs/figuras brutos nas pastas-fonte)
     └── melhor_modelo/  (split + .pth do melhor resultado por BACC)
 ```
 
@@ -74,3 +71,6 @@ Os scripts são autossuficientes se `new_modeling/` estiver em `OdorSight/` (usa
 1. **Não reportar "melhor de N" como número principal** (viés de seleção). Use média ± DP / CIs.
 2. **Benchmark vs Odorify não foi regerado** para a nova curadoria (exigiria rodar o Odorify
    externo nas novas moléculas de teste).
+3. **Scripts da versão submetida** (`uncertainty/uncertainty_bootstrap.py`, `repeated_splits.py`)
+   liam de `DATA/` e da cópia do modelo publicado, ambos removidos — para re-rodar, reaponte para
+   `uncertainty/_submitted_version_backup/` e `Modeling/gnn_best_model_cv5.pth`.

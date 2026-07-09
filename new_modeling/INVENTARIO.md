@@ -15,7 +15,6 @@ Para uma leitura rápida do que importa: `README.md` (raiz) → `reviewer_delive
 | `INVENTARIO.md` 📄 | Este arquivo. |
 | `gnn_utils.py` ⚙️ | Featurização molécula→grafo (átomos/ligações/descritores). Cópia do pipeline do repo; usado por `common.py`. |
 | `best_params.json` ⚙️📎 | Hiperparâmetros publicados (GAT, 6 camadas, 256, etc.). Lido por `common.load_params()`. |
-| `gnn_best_model_cv5.pth` ⚙️ | **Modelo PUBLICADO** (curadoria 4.212). Cópia do original em `Modeling/`; carregado pelos scripts da versão submetida. 5,5 MB. |
 
 ---
 
@@ -37,7 +36,6 @@ Para uma leitura rápida do que importa: `README.md` (raiz) → `reviewer_delive
 | `results/*_log.txt`, `protocol_log.txt` 📄 | Logs das execuções. *Obs.: contêm o caminho absoluto do run original (`...Modeling/uncertainty/results`); é só texto de log, não afeta reprodução.* |
 | `_submitted_version_backup/train_dataset.csv` ⚙️ | Backup do split submetido (idem `DATA/`). Lido pelos scripts da **nova** curadoria p/ recuperar as flags `no_overlap` (quem está no Odorify). |
 | `_submitted_version_backup/test_dataset.csv` ⚙️ | idem (teste submetido). |
-| `_submitted_version_backup/curated_dataset_auto_inspection.csv` 📊 | Curadoria **antiga** completa (4.212), preservada porque o `git pull` a removeu do repo. |
 
 ---
 
@@ -56,7 +54,6 @@ Para uma leitura rápida do que importa: `README.md` (raiz) → `reviewer_delive
 | `uncertainty_results/repeated_splits_per_seed.csv` 📊 | Métricas por seed (15 linhas; seed 1009 = maior BACC). |
 | `uncertainty_results/repeated_splits_distribution.png` 📊 | Boxplot (nova curadoria). |
 | `uncertainty_results/log.txt` 📄 | Log da execução (mesma obs. de caminho absoluto). |
-| `best_params.json` 📎 | Cópia dos HPs (registro de quais HPs este retreino usou). |
 
 ---
 
@@ -64,16 +61,7 @@ Para uma leitura rápida do que importa: `README.md` (raiz) → `reviewer_delive
 | Arquivo | O que é |
 |---|---|
 | `README.md` 📄 | Guia da entrega. |
-| `tabelas/RESUMO_TABELAS.md` 📄 | **Todas as tabelas formatadas** (submetida + nova + melhor modelo). Comece aqui. |
-| `tabelas/submetido_bootstrap_CIs.csv` 📎 | = `uncertainty/results/bootstrap_summary.csv`. |
-| `tabelas/submetido_vs_odorify.csv` 📎 | = `uncertainty/results/paired_diff_summary.csv`. |
-| `tabelas/submetido_splits_repetidos.csv` 📎 | = `uncertainty/results/repeated_splits_summary.csv`. |
-| `tabelas/novacuracao_bootstrap_CIs.csv` 📎 | = `newcuration_retrain/uncertainty_results/bootstrap_summary.csv`. |
-| `tabelas/novacuracao_splits_repetidos.csv` 📎 | = `newcuration_retrain/uncertainty_results/repeated_splits_summary.csv`. |
-| `tabelas/novacuracao_splits_por_seed.csv` 📎 | = `newcuration_retrain/uncertainty_results/repeated_splits_per_seed.csv`. |
-| `figuras/submetido_forest_vs_odorify.png` 📎 | = `uncertainty/results/bootstrap_forest.png`. |
-| `figuras/submetido_boxplot_15splits.png` 📎 | = `uncertainty/results/repeated_splits_distribution.png`. |
-| `figuras/novacuracao_boxplot_15splits.png` 📎 | = `newcuration_retrain/uncertainty_results/repeated_splits_distribution.png`. |
+| `tabelas/RESUMO_TABELAS.md` 📄 | **Todas as tabelas formatadas** (submetida + nova + baselines ML + melhor modelo). Comece aqui. CSVs/figuras brutos ficam nas pastas-fonte. |
 | `melhor_modelo/train_dataset.csv` 📊 | Split de treino do **melhor modelo** (seed 1009, 3.781; treino usa 85% = 3.213). **Não é duplicata** dos outros splits (seed diferente). |
 | `melhor_modelo/test_dataset.csv` 📊 | Split de teste do melhor modelo (420, seed 1009). |
 | `melhor_modelo/gnn_model_best.pth` 📊 | **Melhor modelo** por BACC (seed 1009). Para deploy. 5,5 MB. |
@@ -83,13 +71,13 @@ Para uma leitura rápida do que importa: `README.md` (raiz) → `reviewer_delive
 
 ---
 
-## Redundância (proposital — mantida a seu pedido)
-São **12 grupos** de arquivos idênticos, todos pequenos, por dois motivos legítimos:
-1. **Entrega autossuficiente** — as 6 tabelas e 3 figuras em `reviewer_deliverable/` são cópias
-   renomeadas dos CSVs/PNGs de `*/results/`, para quem receber só a pasta de entrega ter tudo.
-2. **Pastas autodocumentadas** — `best_params.json` (×3) e o split submetido (`DATA/` ≡
-   `_submitted_version_backup/`) aparecem onde cada script/análise precisa deles.
+## Redundância (após limpeza)
+As duplicatas foram removidas: as tabelas/figuras que copiavam `*/results/` saíram do
+`reviewer_deliverable/` (agora ele aponta para as pastas-fonte), a cópia do modelo publicado e o
+`curated_dataset_auto_inspection.csv` foram apagados. Resta apenas `best_params.json` em
+`melhor_modelo/` (para a pasta de deploy ser autossuficiente) e o split submetido em
+`_submitted_version_backup/` (lido pelos scripts da nova curadoria).
 
-**Os 16,5 MB de `.pth` NÃO são redundância:** são **3 modelos diferentes** — publicado (4.212),
-primário da nova curadoria (seed 42) e melhor da nova curadoria (seed 1009). O único que duplica
-algo externo é `gnn_best_model_cv5.pth` (cópia do publicado que também está em `Modeling/`).
+**Os `.pth` NÃO são redundância:** são **2 modelos diferentes** — primário da nova curadoria
+(seed 42, `newcuration_retrain/`) e melhor da nova curadoria (seed 1009, `melhor_modelo/`). O
+modelo publicado (4.212) permanece só em `Modeling/gnn_best_model_cv5.pth`.

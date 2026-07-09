@@ -99,7 +99,7 @@ threshold honesto). Features: **Morgan/ECFP4** (2048 bits, raio 2).
 
 ---
 
-### Arquivos-fonte (CSV completos nesta pasta)
-- `submetido_bootstrap_CIs.csv`, `submetido_vs_odorify.csv`, `submetido_splits_repetidos.csv`
-- `novacuracao_bootstrap_CIs.csv`, `novacuracao_splits_repetidos.csv`, `novacuracao_splits_por_seed.csv`
-- `gnn_vs_ml_baselines.csv`, `ml_baselines_paired_vs_gnn.csv`
+### Arquivos-fonte (CSVs completos nas pastas-fonte)
+- Submetida: `../../uncertainty/results/` (bootstrap_summary · paired_diff_summary · repeated_splits_summary)
+- Nova curadoria: `../../newcuration_retrain/uncertainty_results/` (bootstrap_summary · repeated_splits_summary · repeated_splits_per_seed)
+- Baselines ML: `../../ml_baseline/results/` (comparison_GNN_vs_classical · paired_vs_gnn · primary_bootstrap_CIs · repeated_splits)

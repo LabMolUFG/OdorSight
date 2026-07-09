@@ -18,25 +18,17 @@ Esta pasta reúne tudo que foi pedido, para **as duas curadorias**:
 reviewer_deliverable/
 ├── README.md                     (este arquivo)
 ├── tabelas/
-│   ├── RESUMO_TABELAS.md         ← comece por aqui (todas as tabelas formatadas)
-│   ├── submetido_bootstrap_CIs.csv
-│   ├── submetido_vs_odorify.csv
-│   ├── submetido_splits_repetidos.csv
-│   ├── novacuracao_bootstrap_CIs.csv
-│   ├── novacuracao_splits_repetidos.csv
-│   └── novacuracao_splits_por_seed.csv
-├── figuras/
-│   ├── submetido_forest_vs_odorify.png   (Odor-Sight vs Odorify, IC 95%)
-│   ├── submetido_boxplot_15splits.png
-│   └── novacuracao_boxplot_15splits.png
+│   └── RESUMO_TABELAS.md         ← comece por aqui (todas as tabelas formatadas, inline)
 └── melhor_modelo/                ← melhor split por BACC (nova curadoria, seed 1009)
-    ├── train_dataset.csv         (split de treino completo — 3.781; o modelo usa 85% = 3.213)
-    ├── test_dataset.csv          (split de teste — 420 moléculas)
-    ├── gnn_model_best.pth        (modelo treinado)
-    ├── best_params.json
-    ├── model_threshold.txt
-    └── metrics.json
+    ├── train_dataset.csv (treino 3.781) · test_dataset.csv (420)
+    ├── gnn_model_best.pth
+    └── best_params.json · model_threshold.txt · metrics.json
 ```
+
+Os **CSVs e figuras brutos** (não duplicados aqui) ficam nas pastas-fonte:
+- Submetida (4.212): `../uncertainty/results/`
+- Nova curadoria (4.201): `../newcuration_retrain/uncertainty_results/`
+- Baselines ML (Morgan/ECFP4): `../ml_baseline/results/`
 
 ## Metodologia (resumo)
 - **Bootstrap CIs:** 10.000 reamostras estratificadas do test set → IC 95% percentil para
