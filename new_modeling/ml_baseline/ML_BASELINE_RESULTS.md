@@ -49,17 +49,14 @@ Features: **Morgan/ECFP4** (fingerprints, raio 2, 2048 bits).
 > integrated, applicability-domain-aware platform, these results support the graph-based model.
 
 ## Modelos serializados (`results/models/`)
-`joblib`, um por algoritmo para o **split primário** (seed 42) e para o **melhor split** (maior
-BACC no K=15). Metadados (threshold + métricas) em `results/models/models_meta.json`.
+`joblib`, um por algoritmo, treinado no **split primário** (seed 42, treino completo, threshold
+por CV 5-fold). Metadados (threshold + métricas) em `results/models/models_meta.json`.
 
-| Arquivo | Split | Threshold | BACC (test) |
-|---|---|---|---|
-| `rf_ecfp4_primary.joblib` | primário | 0,650 | 0,861 |
-| `rf_ecfp4_bestsplit_seed1009.joblib` | melhor (seed 1009) | 0,711 | 0,878 |
-| `svm_ecfp4_primary.joblib` | primário | 0,670 | 0,857 |
-| `svm_ecfp4_bestsplit_seed1008.joblib` | melhor (seed 1008) | 0,663 | 0,871 |
-| `xgb_ecfp4_primary.joblib` | primário | 0,704 | 0,891 |
-| `xgb_ecfp4_bestsplit_seed1001.joblib` | melhor (seed 1001) | 0,784 | 0,885 |
+| Arquivo | Threshold | BACC (test) |
+|---|---|---|
+| `rf_ecfp4_primary.joblib` | 0,650 | 0,861 |
+| `svm_ecfp4_primary.joblib` | 0,670 | 0,857 |
+| `xgb_ecfp4_primary.joblib` | 0,704 | 0,891 |
 
 ## Arquivos
 `results/comparison_GNN_vs_classical.csv` · `results/primary_bootstrap_CIs.csv` ·

@@ -5,7 +5,7 @@ Runner for the classical ML baselines (RF/SVM/XGBoost) on MORGAN/ECFP4 fingerpri
   - primary external-test metrics with bootstrap 95% CIs (honest threshold);
   - variance across K=15 benchmark-restricted repeated splits (mean +/- SD);
   - PAIRED bootstrap vs the GNN on the identical primary test set;
-  - serialized models (.joblib): the primary-split final model and the best-BACC K=15 split.
+  - a serialized model (.joblib): the primary-split final model (RF/SVM/XGB).
 
 Outputs -> ./results/  (models in ./results/models/)
 """
@@ -145,17 +145,8 @@ def main():
             mean, med, lo, hi, sd = C.percentile_ci(vals)
             rep_rows.append({"algo": algo, "feature": "ecfp4", "metric": m,
                              "mean": mean, "std": sd, "ci95_low": lo, "ci95_high": hi})
-        best_seed = max(seed_bacc, key=seed_bacc.get)
-        mb, tb, ytb, ptb = fit_split(algo, best, pool, X, y, best_seed)
-        mbmet = C.metrics_at_threshold(ytb, ptb, tb)
-        pthb = os.path.join(MODELS_DIR, f"{algo}_ecfp4_bestsplit_seed{best_seed}.joblib")
-        joblib.dump(mb, pthb, compress=3)
-        models_meta.append({"algo": algo, "feature": "ecfp4", "split": "best_K15", "seed": best_seed,
-                            "file": os.path.basename(pthb), "threshold": float(tb),
-                            **{f"test_{k}": float(mbmet[k]) for k in C.METRIC_ORDER}})
         log(f"  K=15 BACC {np.mean([d['BACC'] for d in per_seed]):.4f} "
-            f"+/- {np.std([d['BACC'] for d in per_seed], ddof=1):.4f} | best seed {best_seed} "
-            f"(BACC {mbmet['BACC']:.4f})")
+            f"+/- {np.std([d['BACC'] for d in per_seed], ddof=1):.4f}")
 
         # incremental saves
         pd.DataFrame(ci_rows).to_csv(os.path.join(OUT, "primary_bootstrap_CIs.csv"), index=False)
