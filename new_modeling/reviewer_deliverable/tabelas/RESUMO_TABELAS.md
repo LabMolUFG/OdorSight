@@ -99,6 +99,24 @@ threshold honesto). Features: **Morgan/ECFP4** (2048 bits, raio 2).
 
 ---
 
+## D. Robustez — Train / CV / Test (nova curadoria)
+
+Treino + **CV 5-fold** + teste (limiar 0,5) para demonstrar ausência de overfitting (2º revisor).
+A CV acompanha o teste em todos os modelos.
+
+| Modelo | BACC train / **CV** / test | ROC-AUC train/CV/test |
+|---|---|---|
+| **GNN** | 0,99 / **0,93 ± 0,02** / 0,89 | 1,00 / 0,98 / 0,94 |
+| RF · ECFP4 | 0,96 / **0,89 ± 0,01** / 0,85 | 1,00 / 0,96 / 0,92 |
+| SVM · ECFP4 | 0,97 / **0,84 ± 0,02** / 0,84 | 0,99 / 0,93 / 0,92 |
+| XGB · ECFP4 | 0,97 / **0,90 ± 0,01** / 0,88 | 0,99 / 0,97 / 0,97 |
+
+> **Achado:** train > CV > test (esperado); a **CV acompanha o teste**, logo os números de teste
+> são representativos, não overfitting. Detalhes + texto p/ o paper:
+> `../../robustness/ROBUSTNESS_TRAIN_CV_TEST.md`.
+
+---
+
 ### Arquivos-fonte (CSVs completos nas pastas-fonte)
 - Submetida: `../../uncertainty/results/` (bootstrap_summary · paired_diff_summary · repeated_splits_summary)
 - Nova curadoria: `../../newcuration_retrain/uncertainty_results/` (bootstrap_summary · repeated_splits_summary · repeated_splits_per_seed)

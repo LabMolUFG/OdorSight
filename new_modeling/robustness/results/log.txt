@@ -1,0 +1,30 @@
+Device: cuda | threshold=0.5 | 5-fold CV | new curation (4201)
+Primary split (seed 42): train 3781 / test 420
+  RF   train BACC=0.962 | CV BACC=0.889+/-0.011 | test BACC=0.854
+  SVM  train BACC=0.974 | CV BACC=0.844+/-0.016 | test BACC=0.843
+  XGB  train BACC=0.970 | CV BACC=0.897+/-0.010 | test BACC=0.879
+
+Featurizing molecular graphs for the GNN...
+  GNN CV fold 1/5 (train 3024 / val 757)...
+  GNN CV fold 2/5 (train 3025 / val 756)...
+  GNN CV fold 3/5 (train 3025 / val 756)...
+  GNN CV fold 4/5 (train 3025 / val 756)...
+  GNN CV fold 5/5 (train 3025 / val 756)...
+  GNN  train BACC=0.987 | CV BACC=0.931+/-0.016 | test BACC=0.889
+
+===== TRAIN / CV / TEST (threshold 0.5) =====
+model split      BACC      MCC       F1  ROC_AUC   PR_AUC
+RF    train     0.962    0.879    0.980    0.996    0.999
+RF    cv     0.889±0.01 0.754±0.03 0.962±0.00 0.958±0.01 0.991±0.00
+RF    test      0.854    0.708    0.922    0.922    0.963
+SVM   train     0.974    0.950    0.993    0.992    0.998
+SVM   cv     0.844±0.02 0.675±0.03 0.950±0.00 0.932±0.01 0.984±0.00
+SVM   test      0.843    0.689    0.917    0.921    0.966
+XGB   train     0.970    0.885    0.981    0.994    0.999
+XGB   cv     0.897±0.01 0.758±0.03 0.961±0.00 0.965±0.01 0.993±0.00
+XGB   test      0.879    0.753    0.933    0.937    0.968
+GNN   train     0.987    0.929    0.988    0.999    1.000
+GNN   cv     0.931±0.02 0.819±0.03 0.971±0.00 0.977±0.01 0.994±0.00
+GNN   test      0.889    0.747    0.927    0.941    0.971
+
+Saved to c:\Users\lorde\OneDrive\Documentos\odorsight\OdorSight\new_modeling\robustness\results

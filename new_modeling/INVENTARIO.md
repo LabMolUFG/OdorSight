@@ -77,6 +77,16 @@ Para uma leitura rápida do que importa: `README.md` (raiz) → `reviewer_delive
 
 ---
 
+## `robustness/` — TRAIN / CV / TEST (2º revisor)
+| Arquivo | O que é |
+|---|---|
+| `train_cv_test_report.py` ⚙️ | Gera, no split primário, métricas de **treino**, **CV 5-fold** (média ± DP) e **teste** para o GNN e os 3 baselines (RF/SVM/XGB). |
+| `ROBUSTNESS_TRAIN_CV_TEST.md` 📄 | Tabela train/CV/test + interpretação (robustez, sem overfitting) + texto p/ o manuscrito. |
+| `results/train_cv_test.csv` 📊 | Tabela completa (8 métricas × modelo × partição). |
+| `results/log.txt` 📄 | Log da execução. |
+
+---
+
 ## `reviewer_deliverable/` — ENTREGA CONSOLIDADA (autossuficiente)
 | Arquivo | O que é |
 |---|---|

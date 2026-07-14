@@ -44,6 +44,11 @@ new_modeling/
 │   ├── ML_BASELINE_RESULTS.md       (tabelas + interpretação + texto p/ o paper)
 │   └── results/                     (comparação GNN vs clássicos + CIs + pareado + figura)
 │
+├── robustness/                     ► TRAIN / CV / TEST (2º revisor)
+│   ├── train_cv_test_report.py      (GNN + RF/SVM/XGB: train + CV5 + test)
+│   ├── ROBUSTNESS_TRAIN_CV_TEST.md  (tabela + interpretação + texto p/ o paper)
+│   └── results/train_cv_test.csv
+│
 └── reviewer_deliverable/           ► ENTREGA CONSOLIDADA (enxuta)
     ├── README.md
     ├── tabelas/RESUMO_TABELAS.md   (tabelas inline; CSVs/figuras brutos nas pastas-fonte)
@@ -66,6 +71,7 @@ Os scripts são autossuficientes se `new_modeling/` estiver em `OdorSight/` (usa
 - Nova curadoria: `python newcuration_retrain/retrain_new_curation.py` depois
   `python newcuration_retrain/uncertainty_new_curation.py --seeds 15`
 - Baselines ML: `python ml_baseline/train_ml_baselines.py` (RF/SVM/XGB em Morgan/ECFP4; salva .joblib)
+- Robustez (train/CV/test): `python robustness/train_cv_test_report.py`
 
 ## Avisos
 1. **Não reportar "melhor de N" como número principal** (viés de seleção). Use média ± DP / CIs.
